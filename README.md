@@ -122,7 +122,7 @@ Jmeter, InfluxDB, Prometheus, Grafana
 
 
 06-测试结论
-第1个测试计划网络带宽25Mbps, 数据包流量3.8KB，响应时间维持在200ms左右，
+第1个测试计划网络带宽25Mbps, 数据包流量3.8KB，响应时间维持在200ms左右，TPS维持在不超过900，
 
 
 
