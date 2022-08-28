@@ -34,7 +34,7 @@ Jmeter, InfluxDB, Prometheus, Grafana
 
 调整网络带宽和数据包流量（接口），执行以下3个测试计划。
 
-1.1 网络带宽25Mbps, 发送数据包流量3.8KB 
+1.1 网络带宽25Mbps, 数据包流量3.8KB 
 
 接口：http://47.250.38.82:9001/spu/goods/10000005620800
 
@@ -63,7 +63,7 @@ Jmeter, InfluxDB, Prometheus, Grafana
 ![grafana-25Mbps-3-8KB-node-exporter-2-2](https://user-images.githubusercontent.com/96624836/187078237-0700500e-0b95-41b2-a851-8b7181ebf152.PNG)
 
 
-1.2 网络带宽25Mbps, 发送数据包流量1.1KB 
+1.2 网络带宽25Mbps, 数据包流量1.1KB 
 
 接口：http://47.250.38.82:9001/spu/goods/10000023827800
 
@@ -92,7 +92,7 @@ Jmeter, InfluxDB, Prometheus, Grafana
 ![grafana-25Mbps-1-1KB-node-exporter-2-2](https://user-images.githubusercontent.com/96624836/187078490-0dffdd93-98b3-4de3-abb7-aca391c2a184.PNG)
 
 
-1.3 网络带宽100Mbps, 发送数据包流量3.8KB 
+1.3 网络带宽100Mbps, 数据包流量3.8KB 
 
 接口：http://47.250.38.82:9001/spu/goods/10000005620800
 
