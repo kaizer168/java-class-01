@@ -1,15 +1,14 @@
 项目性能测试报告
 
 01-测试目的
-主要是让开发者对hero_mall项目的性能负载和容量有个准确的认知。同时，协助技术管理者更好的管
-理业务系统性能质量，科学评估业务系统的负荷，拒绝盲目上线。
+主要是让开发者对 SpringBoot hero_mall 项目接口的性能负载和容量有个准确的认知和评估。
 
 02-测试工具
+Jmeter, InfluxDB, Prometheus, Grafana
 
 03-测试环境
 3.1 环境
-
-3.2 设置启动参数
+阿里云4台云主机，每台配置4C, 8GB.
 
 04-测试场景
 测试场景一般情况下是都是最重要接口：验证hero_mall服务获取商品信息接口在不同并发规模的表现
@@ -17,23 +16,19 @@
 10、15、20、25、30、35、40个线程，5000次;
 时间设置：Ramp-up period(inseconds)的值设为对应线程数
 测试总时长：约等于20ms x 5000次 x 8 = 800s = 13分
-情况02-模拟高延时场景，用户访问接口并发逐渐增加的过程。接口的响应时间为500ms，线程梯度：
-100、200、300、400、500、600、700、800个线程，200次;
-时间设置：Ramp-up period(inseconds)的值设为对应线程数的1/10；
-测试总时长：约等于500ms x 200次 x 8 = 800s = 13分
+
 
 05-核心接口的测试结果
 
 一、商品详情页涉及到的接口
 1、获取商品信息接口
-验证hero_mall服务获取商品信息接口能力性能。目标峰值TPS：10000，P99响应时间：300ms
-Active Threads：注意压力机的活动线程数并不等同于在线用数中，并发的用户数。压力活动线程数是
-用来模拟用户发出并发请求的操作。
-压力机-活动线程数 =模拟=> 系统并发用户数
-系统并发用户数 =不等于=> 压力机-活动线程数 
-TPS、RT
+执行以下3个测试计划。
 
-1.1 25Mbps, 3.8KB 
+1.1 网络带宽25Mbps, 发送数据包流量3.8KB 
+
+接口：http://47.250.38.82:9001/spu/goods/10000005620800
+
+![Alibaba-Bandwidth-25Mbps](https://user-images.githubusercontent.com/96624836/187080058-e52d8c93-1926-4e5a-9f85-4e9505da04b1.png)
 
 ![jmeter-25Mbps-3-8KB-Test](https://user-images.githubusercontent.com/96624836/187077707-efa2c2d8-8543-4000-b711-5fa116227a5d.png)
 
@@ -58,7 +53,11 @@ TPS、RT
 ![grafana-25Mbps-3-8KB-node-exporter-2-2](https://user-images.githubusercontent.com/96624836/187078237-0700500e-0b95-41b2-a851-8b7181ebf152.PNG)
 
 
-1.2 25Mbps, 1.1KB 
+1.2 网络带宽25Mbps, 发送数据包流量1.1KB 
+
+接口：http://47.250.38.82:9001/spu/goods/10000023827800
+
+![Alibaba-Bandwidth-25Mbps](https://user-images.githubusercontent.com/96624836/187080058-e52d8c93-1926-4e5a-9f85-4e9505da04b1.png)
 
 ![jmeter-25Mbps-1-1KB-Test](https://user-images.githubusercontent.com/96624836/187078296-0eabaa06-2a80-4f79-ab77-b8ef3381d2e9.png)
 
@@ -83,7 +82,11 @@ TPS、RT
 ![grafana-25Mbps-1-1KB-node-exporter-2-2](https://user-images.githubusercontent.com/96624836/187078490-0dffdd93-98b3-4de3-abb7-aca391c2a184.PNG)
 
 
-1.3 100Mbps, 3.8KB 
+1.3 网络带宽100Mbps, 发送数据包流量3.8KB 
+
+接口：http://47.250.38.82:9001/spu/goods/10000005620800
+
+![Alibaba-Bandwidth-100Mbps](https://user-images.githubusercontent.com/96624836/187080100-da844522-1d7c-42bb-9bc7-cb2e111e8eca.PNG)
 
 ![jmeter-100Mbps-3-8KB-Test](https://user-images.githubusercontent.com/96624836/187078542-e130adf7-f606-4ede-810c-1ede1d8e7f67.png)
 
@@ -108,7 +111,10 @@ TPS、RT
 ![grafana-100Mbps-3-8KB-node-exporter-2-2](https://user-images.githubusercontent.com/96624836/187078833-1abb265b-260f-4d2a-889a-4bac0febf137.PNG)
 
 
-
+06-测试结论
+hero_web性能测试是针对重点功能，单机单节点服务进行压测，可以看到各个接口容量。本测试供给大
+家作为参考，如有不足或偏差，请指正！如果对性能有其他需求，可以进行集群扩容。例如:3节点、10
+节点、100节点...
 
 
 
